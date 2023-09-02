@@ -32,7 +32,8 @@ pipeline {
         }
         stage ('Deploy Backend') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'TomCatLogin', path: '', url: 'http://192.168.1.174:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
+                sh 'echo NotRunning!'
+                // deploy adapters: [tomcat9(credentialsId: 'TomCatLogin', path: '', url: 'http://192.168.1.174:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
             }
         }
         stage ('Deploy Frontend') {
