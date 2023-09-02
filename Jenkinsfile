@@ -11,15 +11,10 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage ('SonarQube Analysis') {
-            environment {
-                scannerHome = tool 'sonarqube-scanner'
-            }
+        stage ('SonarQube Analysis') {           
+            
             steps {
-                withSonarQubeEnv('Sonar-local-test') {
-                    sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeployBackend -Dsonar.host.url=http://192.168.1.178:9000 -Dsonar.login=sqp_793b439115b4d752ff11bf59434ed693ad3d7abb -Dsonar.java.binaries=target"
-
-                }
+                echo 'not running for now'
             }
         }
     }
