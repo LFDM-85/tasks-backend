@@ -39,7 +39,7 @@ pipeline {
         stage ('Deploy Frontend') {
             steps {
                 dir('frontend'){
-                    git credentialsId: , url: 'https://github.com/LFDM-85/tasks-frontend'
+                    git url: 'https://github.com/LFDM-85/tasks-frontend'
                     sh 'mvn clean package'
                     deploy adapters: [tomcat9(credentialsId: 'TomCatLogin', path: '', url: 'http://192.168.1.174:8001/')], contextPath: 'tasks', war: 'target/task.war'
                 }
