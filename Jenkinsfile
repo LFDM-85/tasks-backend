@@ -30,7 +30,20 @@ pipeline {
                 }
             }
         }
-        
+        stage ('Deploy Backend') {
+            steps {
+                deploy adapters: [tomcat9(credentialsId: 'TomCatLogin', path: '', url: 'http://192.168.1.174:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
+            }
+        }
+        stage ('Deploy Frontend') {
+            steps {
+                dir('frontend'){
+                    git credentialsId: none, url: 'https://github.com/LFDM-85/tasks-frontend'
+                    sh 'mvn clean package'
+                    deploy adapters: [tomcat9(credentialsId: 'TomCatLogin', path: '', url: 'http://192.168.1.174:8001/')], contextPath: 'tasks', war: 'target/task.war'
+                }
+            }
+        }
     }
 }
 
