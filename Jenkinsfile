@@ -39,10 +39,11 @@ pipeline {
         stage ('Deploy Frontend') {
             steps {
                 dir('frontend'){
-                    git url: 'https://github.com/LFDM-85/tasks-frontend'
-                    sleep(1)
-                    sh 'mvn clean package'
-                    deploy adapters: [tomcat9(credentialsId: 'TomCatLogin', path: '', url: 'http://192.168.1.174:8001/')], contextPath: 'tasks', war: 'target/task.war'
+                    input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                    // git url: 'https://github.com/LFDM-85/tasks-frontend'
+                    // sleep(1)
+                    // sh 'mvn clean package'
+                    // deploy adapters: [tomcat9(credentialsId: 'TomCatLogin', path: '', url: 'http://192.168.1.174:8001/')], contextPath: 'tasks', war: 'target/task.war'
                 }
             }
         }
