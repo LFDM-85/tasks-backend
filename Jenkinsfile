@@ -39,7 +39,7 @@ pipeline {
         stage ('End Message') {
             steps {
                 dir('frontend'){
-                    input message: 'Finishing deployment...Send report message? (Click "Proceed" to continue)'
+                    input message: 'Finishing deployment...Send report message?'
                     // git url: 'https://github.com/LFDM-85/tasks-frontend'
                     // sleep(1)
                     // sh 'mvn clean package'
