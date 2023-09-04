@@ -33,7 +33,6 @@ pipeline {
         stage ('Deploy Backend') {
             steps {
                 sh 'echo NotRunning!'
-                sh 'apt update -y'
                 // deploy adapters: [tomcat9(credentialsId: 'TomCatLogin', path: '', url: 'http://192.168.1.174:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
             }
         }
